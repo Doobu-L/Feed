@@ -1,10 +1,9 @@
 package com.mypj.aaa.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -21,16 +20,21 @@ import lombok.NoArgsConstructor;
 @Entity
 public class User extends BaseEntity{
 
-  @Column
+  @Column(length = 50,unique = true)
   private String userId;
-  @Column
+
+  @JsonIgnore
+  @Column(length = 100)
   private String password;
-  @Column
+
+  @Column(length = 50)
   private String email;
+
+  @JsonIgnore
   @Column
   private boolean activated;
 
-  @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+  @ManyToMany
   @JoinTable(
       name = "user_authority",
       joinColumns = {@JoinColumn(name = "user_id",referencedColumnName = "id")},
