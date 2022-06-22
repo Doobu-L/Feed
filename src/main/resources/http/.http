@@ -1,0 +1,59 @@
+# 회원가입
+POST http://localhost:9000/api/users/signup
+Content-Type: application/json
+
+{
+  "userId": "test2",
+  "password": "1111",
+  "email": "test@test.com"
+}
+
+###
+
+### Admin, User 권한 둘다 가진 유저. 토큰발급
+
+POST http://localhost:9000/api/authenticate
+Content-Type: application/json
+
+{
+  "userId": "lgs",
+  "password": "1111"
+}
+
+### response : eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsZ3MiLCJhdXRoIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJleHAiOjE2NTU4OTY1OTB9.5rvTUFO4rX50n_lnllUhoAm7NBcJL5h_6zBGTgEvCd60hXi1ldgbC64fOoHfAnV_ixZwqzJ1rM-AFQK3sk1kWQ
+###
+
+### User 권한만 가진 유저. 토큰발급.
+
+POST http://localhost:9000/api/authenticate
+Content-Type: application/json
+
+{
+  "userId": "test2",
+  "password": "1111"
+}
+
+### response : eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MiIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTU4OTY2MTF9.EFmw017HNrLQp5OkMv4e237B9UVHE0ArOZCBHWZeFjX1hO3DCjH7o_uAeFCWCrac_H0e6VjrVbRzWJYEnpNlbg
+###
+
+
+GET http://localhost:9000/api/users
+
+## 401 Unauthorized - notoken
+
+
+### ADMIN,USER 권한 둘다 있는 token
+
+GET http://localhost:9000/api/users/test2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsZ3MiLCJhdXRoIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJleHAiOjE2NTU4OTY1OTB9.5rvTUFO4rX50n_lnllUhoAm7NBcJL5h_6zBGTgEvCd60hXi1ldgbC64fOoHfAnV_ixZwqzJ1rM-AFQK3sk1kWQ
+
+### response : userDto
+###
+
+### USER 권한만 있는 token
+
+GET http://localhost:9000/api/users/test2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MiIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NTU4OTY2MTF9.EFmw017HNrLQp5OkMv4e237B9UVHE0ArOZCBHWZeFjX1hO3DCjH7o_uAeFCWCrac_H0e6VjrVbRzWJYEnpNlbg
+
+### response : 403 / Forbidden
+###
