@@ -1,4 +1,4 @@
-package com.mypj.aaa.domain;
+package com.mypj.aaa.entity;
 
 import java.time.LocalDateTime;
 import javax.persistence.Column;

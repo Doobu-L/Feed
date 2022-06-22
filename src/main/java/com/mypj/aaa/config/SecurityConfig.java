@@ -4,6 +4,7 @@ import com.mypj.aaa.jwt.JwtAccessDeniedHandler;
 import com.mypj.aaa.jwt.JwtAuthenticationEntryPoint;
 import com.mypj.aaa.jwt.JwtSecurityConfig;
 import com.mypj.aaa.jwt.TokenProvider;
+import java.beans.Encoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -59,7 +60,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
   protected void configure(HttpSecurity http) throws Exception {
     http
         .csrf().disable()
-
         //custum exception handler
         .exceptionHandling()
         .authenticationEntryPoint(jwtAuthenticationEntryPoint)
@@ -71,7 +71,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
         .and()
         .authorizeRequests()
-        .antMatchers("/api/hello").permitAll()   //권한허용
+        .antMatchers("/api/authenticate","/api/hello").permitAll()   //권한허용
         .anyRequest().authenticated()
 
         .and()
