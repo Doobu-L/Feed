@@ -68,8 +68,9 @@ public class TokenProvider implements InitializingBean {
   }
 
   public Authentication getAthentication(String token){
-    Claims claims = Jwts.parser()
+    Claims claims = Jwts.parserBuilder()
         .setSigningKey(key)
+        .build()
         .parseClaimsJws(token)
         .getBody();
 
@@ -85,7 +86,10 @@ public class TokenProvider implements InitializingBean {
 
   public boolean validateToken(String token){
     try{
-      Jwts.parser().setSigningKey(key).parseClaimsJws(token);
+      Jwts.parserBuilder()
+          .setSigningKey(key)
+          .build()
+          .parseClaimsJws(token);
       return true;
     }catch (SecurityException | MalformedJwtException e){
       log.info("잘못된 JWT 서명입니다.");
