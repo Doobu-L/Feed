@@ -41,7 +41,7 @@ public class AnnonymousTest {
 
   @DisplayName("회원가입 테스트 1# - 아이디 중복")
   @Test
-  void signup(){
+  void isExist_UserId(){
     User user = User.builder()
         .userId("test").build();
 
@@ -50,6 +50,22 @@ public class AnnonymousTest {
     when(userRepository.findOneWithAuthoritiesByUserId(userDto.getUserId())).thenReturn(Optional.of(user));
 
     Assertions.assertThrows(RuntimeException.class,()->{userService.signup(userDto);});
+  }
+
+  @DisplayName("회원가입 테스트 2# - 회원 가입")
+  @Test
+  void signup(){
+    UserDto userDto = UserDto.builder()
+        .userId("TEST2")
+        .password("1234")
+        .email("emin@min.com")
+        .build();
+
+    when(userRepository.findOneWithAuthoritiesByUserId(userDto.getUserId())).thenReturn(Optional.of(null));
+
+    assertThat(userService.signup(userDto)).isExactlyInstanceOf(User.class);
+
+
   }
 
 
