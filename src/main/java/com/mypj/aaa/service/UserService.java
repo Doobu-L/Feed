@@ -37,13 +37,13 @@ public class UserService {
   }
 
   @Transactional(readOnly = true)
-  public Optional<User> getUserWithAuthorities(String userId){
-    return userRepository.findOneWithAuthoritiesByUserId(userId);
+  public User getUserWithAuthorities(String userId){
+    return userRepository.findOneWithAuthoritiesByUserId(userId).get();
   }
 
   @Transactional(readOnly = true)
-  public Optional<User> getMyUserWithAuthorities(){
-    return SecurityUtil.getCurrentUserId().flatMap(userRepository::findOneWithAuthoritiesByUserId);
+  public User getMyUserWithAuthorities(){
+    return SecurityUtil.getCurrentUserId().flatMap(userRepository::findOneWithAuthoritiesByUserId).get();
   }
 
 
