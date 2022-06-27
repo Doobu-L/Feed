@@ -31,13 +31,13 @@ public class UserController {
   @GetMapping("")
   @PreAuthorize("hasAnyRole('USER','ADMIN')")
   public ResponseEntity<User> getMyUserInfo(){
-    return ResponseEntity.ok(userService.getMyUserWithAuthorities().get());
+    return ResponseEntity.ok(userService.getMyUserWithAuthorities());
   }
 
   @GetMapping("/{userId}")
   @PreAuthorize("hasAnyRole('ADMIN')")
   public ResponseEntity<User> getUserINfo(@PathVariable("userId") String userId){
-    return ResponseEntity.ok(userService.getUserWithAuthorities(userId).get());
+    return ResponseEntity.ok(userService.getUserWithAuthorities(userId));
   }
 
 }
