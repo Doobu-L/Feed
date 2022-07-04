@@ -11,12 +11,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 
 @Getter
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
+@DynamicUpdate
 @Entity
 public class User extends BaseEntity{
 
