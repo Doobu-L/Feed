@@ -1,4 +1,4 @@
-package com.mypj.aaa.dto;
+package com.mypj.aaa.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

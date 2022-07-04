@@ -1,4 +1,4 @@
-package com.mypj.aaa.dto;
+package com.mypj.aaa.domain.dto;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

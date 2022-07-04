@@ -1,4 +1,4 @@
-package com.mypj.aaa.entity;
+package com.mypj.aaa.domain.entity;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
