@@ -18,6 +18,7 @@ public class FeedService {
   private final FeedRepository feedRepository;
   private final UserRepository userRepository;
 
+  @Transactional
   public List<FeedDto> getAllFeedList(){
     return feedRepository.findAll().stream().map(FeedDto::new).collect(Collectors.toList());
   }

@@ -1,12 +1,19 @@
 package com.mypj.aaa.domain.dto;
 
+import com.mypj.aaa.domain.entity.Category;
 import com.mypj.aaa.domain.entity.Feed;
+import com.mypj.aaa.domain.entity.FeedCategory;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
 public class FeedDto {
+
+  private List<Category> categories = new ArrayList<>();
 
   private String title;
   private String content;
@@ -18,6 +25,8 @@ public class FeedDto {
     this.content = feed.getContent();
     this.userId = feed.getUser().getUserId();
     this.viewCount = feed.getViewCount();
+    this.categories = feed.getFeedCategories().stream().map(FeedCategory::getCategory).collect(
+        Collectors.toList());
   }
 
 }
