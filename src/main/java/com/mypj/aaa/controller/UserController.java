@@ -1,7 +1,7 @@
 package com.mypj.aaa.controller;
 
-import com.mypj.aaa.dto.UserDto;
-import com.mypj.aaa.entity.User;
+import com.mypj.aaa.domain.dto.UserDto;
+import com.mypj.aaa.domain.entity.User;
 import com.mypj.aaa.service.UserService;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;

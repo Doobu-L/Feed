@@ -1,6 +1,6 @@
 package com.mypj.aaa.repository;
 
-import com.mypj.aaa.entity.User;
+import com.mypj.aaa.domain.entity.User;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;

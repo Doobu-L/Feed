@@ -1,7 +1,7 @@
 package com.mypj.aaa.controller;
 
-import com.mypj.aaa.dto.LoginDto;
-import com.mypj.aaa.dto.TokenDto;
+import com.mypj.aaa.domain.dto.LoginDto;
+import com.mypj.aaa.domain.dto.TokenDto;
 import com.mypj.aaa.jwt.JwtFilter;
 import com.mypj.aaa.jwt.TokenProvider;
 import javax.validation.Valid;

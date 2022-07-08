@@ -1,8 +1,8 @@
 package com.mypj.aaa.securityTest.annonymous;
 
 import com.mypj.aaa.controller.UserController;
-import com.mypj.aaa.dto.UserDto;
-import com.mypj.aaa.entity.User;
+import com.mypj.aaa.domain.dto.UserDto;
+import com.mypj.aaa.domain.entity.User;
 import com.mypj.aaa.repository.UserRepository;
 import com.mypj.aaa.service.UserService;
 import java.util.Optional;

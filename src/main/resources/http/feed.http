@@ -1,0 +1,9 @@
+POST http://localhost:9000/api/feeds
+Content-Type: application/json
+
+{
+  "userId": "lgs",
+  "title": "테스트용",
+  "content": "테스트요요요오오오오옹"
+
+}

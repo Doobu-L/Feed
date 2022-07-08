@@ -1,7 +1,7 @@
 package com.mypj.aaa.service;
 
-import com.mypj.aaa.entity.CustomUserDtails;
-import com.mypj.aaa.entity.User;
+import com.mypj.aaa.domain.entity.CustomUserDtails;
+import com.mypj.aaa.domain.entity.User;
 import com.mypj.aaa.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

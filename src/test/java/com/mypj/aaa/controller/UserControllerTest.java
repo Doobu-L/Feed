@@ -5,7 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mypj.aaa.dto.UserDto;
+import com.mypj.aaa.domain.dto.UserDto;
 import com.mypj.aaa.repository.UserRepository;
 import com.mypj.aaa.service.UserService;
 import org.junit.jupiter.api.BeforeEach;

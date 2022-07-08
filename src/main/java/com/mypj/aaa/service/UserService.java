@@ -1,12 +1,11 @@
 package com.mypj.aaa.service;
 
-import com.mypj.aaa.dto.UserDto;
-import com.mypj.aaa.entity.Authority;
-import com.mypj.aaa.entity.User;
+import com.mypj.aaa.domain.dto.UserDto;
+import com.mypj.aaa.domain.entity.Authority;
+import com.mypj.aaa.domain.entity.User;
 import com.mypj.aaa.repository.UserRepository;
 import com.mypj.aaa.util.SecurityUtil;
 import java.util.Collections;
-import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
