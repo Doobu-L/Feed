@@ -7,12 +7,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Getter
 @ToString
 @DynamicUpdate
+@DynamicInsert
+@NoArgsConstructor
 @Entity
 public class FeedCategory {
 
@@ -27,5 +31,10 @@ public class FeedCategory {
   @ManyToOne
   @JoinColumn(name = "category_id")
   private Category category;
+
+  public FeedCategory(Feed feed, Category category){
+    this.feed = feed;
+    this.category = category;
+  }
 
 }
