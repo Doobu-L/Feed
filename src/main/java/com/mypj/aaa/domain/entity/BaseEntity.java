@@ -8,7 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PostPersist;
 import javax.persistence.PostUpdate;
+import lombok.Getter;
+import lombok.ToString;
 
+@Getter
+@ToString
 @MappedSuperclass
 public abstract class BaseEntity {
 
