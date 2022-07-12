@@ -26,9 +26,13 @@ public abstract class BaseEntity {
   @Column
   private LocalDateTime updateAt;
 
+  @Column(length = 1)
+  private String delYn;
+
   @PostPersist
   public void onCreated(){
     this.createAt = LocalDateTime.now();
+    this.delYn = "N";
   }
 
   @PostUpdate
