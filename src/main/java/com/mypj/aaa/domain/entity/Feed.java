@@ -60,7 +60,7 @@ public class Feed extends BaseEntity{
     this.content = content;
     Set<FeedCategory> feedCategories = categories.stream().map(category -> new FeedCategory(this,category)).collect(
         Collectors.toSet());
-    this.feedCategories = feedCategories;
+    this.feedCategories.addAll(feedCategories);
   }
 
 
