@@ -1,11 +1,14 @@
 # AAA + Feed APIs
 
-Feed - Category 
+# Feed - Category 
  - 다:다 관계 
  - OneToMany -> FeedCategory <- OneToMany  중간엔터티를 만들어서 N:M 
  
 
-Schedule
+
+# Schedule
+
+
 ![image](https://user-images.githubusercontent.com/60733417/178443894-640ddf90-3f4e-4b88-a61d-db0f113eaef2.png)
 
 User - Schduler - Scheduler 
