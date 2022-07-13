@@ -13,8 +13,6 @@
 
 User - Schduler - Scheduler 
 
-### N:M 을 1:N 으로 풀기위한 몸부림
-
 1. User는 여러개 Scheduler 를 등록 할 수 있다.(1:N). user - scheduler (1:N)
 2. Scheduler는 여러개 Schedule 을 가지고 있다. (1:N)
 3. User는 다른 User의 Scheduler를 follow 할 수 있다. user - followSchdule (1:N)
