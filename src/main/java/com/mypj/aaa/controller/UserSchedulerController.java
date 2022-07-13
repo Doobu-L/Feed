@@ -20,13 +20,17 @@ public class UserSchedulerController {
   private final UserSchedulerService userSchedulerService;
   private final UserService userService;
 
+
   @PostMapping
   @PreAuthorize("hasAnyRole('USER')")
   public ResponseEntity newScheduler(@RequestBody SchedulerDto req){
     User user = userService.getMyUserWithAuthorities();
+
+    if(userSchedulerService.checkTitle(user,req.getTitle()))
+      return ResponseEntity.badRequest().body("동일한 스케줄러가 존재합니다.");
     userSchedulerService.newScheduler(user,req);
+
     return ResponseEntity.ok(HttpStatus.CREATED);
   }
-
 
 }
