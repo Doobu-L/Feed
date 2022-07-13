@@ -3,7 +3,9 @@ package com.mypj.aaa.domain.entity;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -12,6 +14,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @ToString
 @DynamicInsert
 @DynamicUpdate
+@NoArgsConstructor
 @Entity
 public class Schedule extends BaseEntity {
 
@@ -21,11 +24,11 @@ public class Schedule extends BaseEntity {
   @Column
   private LocalDateTime targetDateTime;
 
-  private int year;
-  private int month;
-  private int day;
-  private int time;
-
+  @Builder
+  public Schedule(String title,LocalDateTime targetDateTime){
+    this.title = title;
+    this.targetDateTime = targetDateTime;
+  }
 
 
 }
