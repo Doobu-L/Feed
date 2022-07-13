@@ -31,4 +31,8 @@ public class UserSchedulerService {
     schedulerRepository.save(scheduler);
   }
 
+  public boolean checkTitle(User user,String title){
+    return schedulerRepository.findByTitleAndUser(title,user).isPresent()?false:true;
+  }
+
 }
