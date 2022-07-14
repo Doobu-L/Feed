@@ -8,12 +8,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/api/scheduler")
+@RequestMapping("/api/users/schedulers")
 @RequiredArgsConstructor
 @RestController
 public class UserSchedulerController {
@@ -33,4 +35,17 @@ public class UserSchedulerController {
     return ResponseEntity.ok(HttpStatus.CREATED);
   }
 
+
+
+
+  /*
+  * 유저가 등록한 스케줄러들을 가져온다
+  * */
+  @GetMapping("/{userId}")
+  public ResponseEntity getUserSchedulers(@PathVariable Long userId){
+    return ResponseEntity.ok(userSchedulerService.getUserSchedulers(userId));
+  }
+
+
 }
+

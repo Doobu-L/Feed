@@ -35,4 +35,12 @@ public class UserSchedulerService {
     return schedulerRepository.findByTitleAndUser(title,user).isPresent()?false:true;
   }
 
+  @Transactional
+  public List<SchedulerDto> getUserSchedulers(long userId){
+    User user = userRepository.findById(userId).orElseThrow(()->new RuntimeException("해당하는 유저가 없습니다."));
+    return user.getSchedulers().stream().map(SchedulerDto::new).collect(Collectors.toList());
+
+
+  }
+
 }

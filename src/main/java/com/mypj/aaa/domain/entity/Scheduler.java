@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Where;
 
 
 @Getter
@@ -24,6 +25,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicUpdate
 @NoArgsConstructor
 @Entity
+@Where(clause = "del_yn='N'")
 public class Scheduler extends BaseEntity {
 
   @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
