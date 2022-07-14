@@ -18,11 +18,13 @@ import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Where;
 
 @Getter @ToString
 @DynamicUpdate
 @DynamicInsert
 @Entity
+@Where(clause = "del_yn='N'")
 public class Feed extends BaseEntity{
 
   @ManyToOne(cascade = CascadeType.ALL,optional = false,fetch = FetchType.LAZY)
