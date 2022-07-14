@@ -30,6 +30,7 @@ public class User extends BaseEntity{
 
   @OneToMany(fetch = FetchType.LAZY,mappedBy = "user",cascade = CascadeType.ALL)
   @BatchSize(size = 10)
+  @JsonIgnore
   private Set<Scheduler> schedulers;
 
   @Column(length = 50,unique = true)
