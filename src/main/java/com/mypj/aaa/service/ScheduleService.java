@@ -24,5 +24,11 @@ public class ScheduleService {
     schedulerRepository.save(scheduler);
   }
 
+  public ScheduleDto getSchedule(Long id){
+    return scheduleRepository.findById(id).map(ScheduleDto::new).orElseThrow(() -> new RuntimeException("해당 스케쥴이 없습니다."));
+
+
+  }
+
 
 }
