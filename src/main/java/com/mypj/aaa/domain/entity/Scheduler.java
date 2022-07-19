@@ -44,7 +44,7 @@ public class Scheduler extends BaseEntity {
   @Builder
   public Scheduler(User user, List<Schedule> schedules,String title) {
     this.user = user;
-    if(!schedules.isEmpty()){
+    if(schedules!=null){
       schedules.forEach(schedule -> this.schedules.add(schedule));
     }
     this.title = title;
