@@ -1,6 +1,7 @@
 package com.mypj.aaa.service;
 
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.when;
 
 import com.mypj.aaa.domain.dto.SchedulerDto;
 import com.mypj.aaa.domain.entity.Scheduler;
@@ -36,6 +37,17 @@ class UserSchedulerServiceTest {
 
   @Test
   void checkTitle() {
+    User user = User.builder().userId("test").build();
+    String title = "title";
+    Scheduler scheduler = Scheduler.builder().user(user).title("title").build();
+    when(schedulerRepository.findByTitleAndUser(title,user)).thenReturn(Optional.of(scheduler));
+
+    Boolean check = userSchedulerService.checkTitle(user,title);
+    Boolean check2 = userSchedulerService.checkTitle(user,"TTTT");
+
+    Assertions.assertThat(check).isFalse();
+    Assertions.assertThat(check2).isTrue();
+
   }
 
   @Test
