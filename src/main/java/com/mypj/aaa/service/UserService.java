@@ -36,8 +36,8 @@ public class UserService {
   }
 
   @Transactional(readOnly = true)
-  public User getUserWithAuthorities(String userId){
-    return userRepository.findOneWithAuthoritiesByUserId(userId).get();
+  public UserDto getUserWithAuthorities(Long id){
+    return userRepository.findById(id).map(UserDto::new).orElseThrow(()-> new RuntimeException("해당 유저는 존재하지 않습니다."));
   }
 
   @Transactional(readOnly = true)

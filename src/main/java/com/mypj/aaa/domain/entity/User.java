@@ -29,7 +29,7 @@ import org.hibernate.annotations.Where;
 public class User extends BaseEntity{
 
   @OneToMany(fetch = FetchType.LAZY,mappedBy = "user",cascade = CascadeType.ALL)
-  @BatchSize(size = 10)
+  @BatchSize(size = 100)
   @JsonIgnore
   private Set<Scheduler> schedulers;
 
