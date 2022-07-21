@@ -15,6 +15,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Where;
@@ -30,6 +31,7 @@ import org.hibernate.annotations.Where;
 public class Scheduler extends BaseEntity {
 
   @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+  @BatchSize(size = 100)
   @JoinColumn(name = "scheduler_id")
   @JsonIgnore
   private Set<Schedule> schedules = new HashSet<>();
