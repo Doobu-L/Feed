@@ -27,7 +27,7 @@ public class ScheduleDto {
   private int minute;
 
   public ScheduleDto(Schedule schedule){
-    this.id = id;
+    this.id = schedule.getId();
     this.title = schedule.getTitle();
     this.targetDateTime = schedule.getTargetDateTime();
     this.month = this.targetDateTime.getMonthValue();
