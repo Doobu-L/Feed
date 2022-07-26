@@ -1,5 +1,6 @@
 package com.mypj.aaa.controller;
 
+import com.mypj.aaa.domain.dto.ListDto;
 import com.mypj.aaa.domain.dto.ScheduleDto;
 import com.mypj.aaa.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
@@ -16,17 +17,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 public class ScheduleController {
+
   private final ScheduleService scheduleService;
 
   @PostMapping("/{schedulerId}")
-  public ResponseEntity newSchedule(@PathVariable long schedulerId, @RequestBody ScheduleDto scheduleDto){
-    scheduleService.newSchedule(schedulerId,scheduleDto);
+  public ResponseEntity newSchedule(@PathVariable long schedulerId,
+      @RequestBody ScheduleDto scheduleDto) {
+    scheduleService.newSchedule(schedulerId, scheduleDto);
     return ResponseEntity.ok(HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity getSchedule(@PathVariable Long id){
+  public ResponseEntity getSchedule(@PathVariable Long id) {
     return ResponseEntity.ok(scheduleService.getSchedule(id));
   }
 
+  @PostMapping
+  public ResponseEntity getSchedulesBySchedulerIds(@RequestBody ListDto listDto) {
+    return ResponseEntity.ok(scheduleService.getSchedulesBySchedulerIds(
+        listDto.getIds()));
+  }
 }

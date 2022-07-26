@@ -5,6 +5,9 @@ import com.mypj.aaa.domain.entity.Schedule;
 import com.mypj.aaa.domain.entity.Scheduler;
 import com.mypj.aaa.repository.ScheduleRepository;
 import com.mypj.aaa.repository.SchedulerRepository;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,9 +29,15 @@ public class ScheduleService {
 
   public ScheduleDto getSchedule(Long id){
     return scheduleRepository.findById(id).map(ScheduleDto::new).orElseThrow(() -> new RuntimeException("해당 스케쥴이 없습니다."));
-
-
   }
 
+  @Transactional
+  public List<ScheduleDto> getSchedulesBySchedulerIds(List<Long> ids){
+    return schedulerRepository.findByIdIn(ids).stream()
+        .map(Scheduler::getSchedules)
+        .flatMap(Collection::stream)
+        .map(ScheduleDto::new)
+        .collect(Collectors.toList());
+  }
 
 }
