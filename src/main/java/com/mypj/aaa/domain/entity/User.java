@@ -33,6 +33,11 @@ public class User extends BaseEntity{
   @JsonIgnore
   private Set<Scheduler> schedulers;
 
+  @OneToMany(fetch = FetchType.LAZY,mappedBy = "user",cascade = CascadeType.ALL)
+  @BatchSize(size = 100)
+  @JsonIgnore
+  private Set<FollowScheduler> followSchedulers;
+
   @Column(length = 50,unique = true)
   private String userId;
 
