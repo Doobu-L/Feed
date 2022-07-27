@@ -1,6 +1,7 @@
 package com.mypj.aaa.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -39,6 +40,12 @@ public class Scheduler extends BaseEntity {
   @ManyToOne
   @JsonIgnore
   private User user;
+
+  @OneToMany
+  @BatchSize(size = 100)
+  @JoinColumn(name = "scheduler_id")
+  @JsonIgnore
+  private Set<FollowScheduler> followed = new HashSet<>();
 
   @Column
   private String title;
