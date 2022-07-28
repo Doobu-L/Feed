@@ -3,13 +3,14 @@ package com.mypj.aaa.domain.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mypj.aaa.domain.entity.Schedule;
 import io.swagger.v3.oas.annotations.Hidden;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Getter
 @ToString
+@NoArgsConstructor
 public class ScheduleDto {
 
   @Hidden

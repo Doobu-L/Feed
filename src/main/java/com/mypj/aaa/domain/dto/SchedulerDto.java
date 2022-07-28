@@ -4,10 +4,12 @@ import com.mypj.aaa.domain.entity.Scheduler;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Getter
 @ToString
+@NoArgsConstructor
 public class SchedulerDto {
   private List<ScheduleDto> schedules;
   private Long id;
