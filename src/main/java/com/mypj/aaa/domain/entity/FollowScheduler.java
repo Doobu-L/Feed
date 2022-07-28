@@ -1,5 +1,6 @@
 package com.mypj.aaa.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import lombok.Getter;
@@ -13,9 +14,11 @@ import lombok.ToString;
 public class FollowScheduler extends BaseEntity {
 
   @ManyToOne
+  @JsonIgnore
   private User user;
 
   @ManyToOne
+  @JsonIgnore
   private Scheduler scheduler;
 
   public FollowScheduler(User user,Scheduler scheduler){

@@ -16,6 +16,11 @@ public class FollowSchedulerService {
   private final SchedulerRepository schedulerRepository;
 
   @Transactional
+  public boolean isFollowed(User user,long schedulerId){
+    return followSchedulerRepository.countFollowSchedulerByuserIdAndSchedulerId(user.getId(),schedulerId) >0 ?true:false;
+  }
+
+  @Transactional
   public void saveFollowScheduler(User user, long schedulerId){
     Scheduler scheduler = schedulerRepository.findById(schedulerId).orElseThrow(()->new RuntimeException("해당 스케쥴러가 존재하지 않습니다."));
     FollowScheduler followScheduler = new FollowScheduler(user,scheduler);
