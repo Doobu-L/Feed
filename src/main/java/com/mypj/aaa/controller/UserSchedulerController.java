@@ -2,6 +2,7 @@ package com.mypj.aaa.controller;
 
 import com.mypj.aaa.domain.dto.SchedulerDto;
 import com.mypj.aaa.domain.entity.User;
+import com.mypj.aaa.service.FollowSchedulerService;
 import com.mypj.aaa.service.UserSchedulerService;
 import com.mypj.aaa.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -21,10 +22,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserSchedulerController {
   private final UserSchedulerService userSchedulerService;
   private final UserService userService;
-
+  private final FollowSchedulerService followSchedulerService;
 
   @PostMapping
-  @PreAuthorize("hasAnyRole('USER')")
+  @PreAuthorize("hasRole('USER')")
   public ResponseEntity newScheduler(@RequestBody SchedulerDto req){
     User user = userService.getMyUserWithAuthorities();
 
@@ -35,15 +36,22 @@ public class UserSchedulerController {
     return ResponseEntity.ok(HttpStatus.CREATED);
   }
 
-
-
-
   /*
   * 유저가 등록한 스케줄러들을 가져온다
   * */
   @GetMapping("/{userId}")
   public ResponseEntity getUserSchedulers(@PathVariable Long userId){
     return ResponseEntity.ok(userSchedulerService.getUserSchedulers(userId));
+  }
+
+
+  @PostMapping("/follow/{schedulerId}")
+  //@PreAuthorize("hasAnyRole('USER')")
+  public ResponseEntity saveFollowScheduler(@PathVariable Long schedulerId){
+    User user = userService.getMyUserWithAuthorities();
+
+    followSchedulerService.saveFollowScheduler(user,schedulerId);
+    return ResponseEntity.ok(HttpStatus.CREATED);
   }
 
 

@@ -32,7 +32,7 @@ public class UserSchedulerService {
   }
 
   public boolean checkTitle(User user,String title){
-    return schedulerRepository.findByTitleAndUser(title,user).isPresent()?false:true;
+    return schedulerRepository.findByTitleAndUser(title,user).isPresent()?true:false;
   }
 
   @Transactional
