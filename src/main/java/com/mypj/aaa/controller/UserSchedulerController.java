@@ -49,6 +49,8 @@ public class UserSchedulerController {
   //@PreAuthorize("hasAnyRole('USER')")
   public ResponseEntity saveFollowScheduler(@PathVariable Long schedulerId){
     User user = userService.getMyUserWithAuthorities();
+    if(followSchedulerService.isFollowed(user,schedulerId))
+      return ResponseEntity.badRequest().body("이미 팔로우 중입니다.");
 
     followSchedulerService.saveFollowScheduler(user,schedulerId);
     return ResponseEntity.ok(HttpStatus.CREATED);
